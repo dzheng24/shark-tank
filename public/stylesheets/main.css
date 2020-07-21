@@ -1,0 +1,11 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; /* Footer height */
+  background-color: #e3f2fd;
+}
+
+#navbar {
+  background-color: #e3f2fd;
+}
