@@ -4,19 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Card</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <h1>Create a Card Here</h1>
-    <form id="idea_form" action="/create-card" method="POST">
+    <form id="idea_form" action="submit">
       Title
-      <input type="text" placeholder="Idea Title" />
+      <input id="idea_title" type="text" placeholder="Idea Title" />
       Ideas in Detail
-      <input type="text" placeholder="Describe your Idea" />
+      <input
+        id="idea_description"
+        type="text"
+        placeholder="Describe your Idea"
+      />
       Image
-      <input type="text" placeholder="Enter a URL of the image" />
+      <input
+        id="idea_image_url"
+        type="text"
+        placeholder="Enter a URL of the image"
+      />
       <button id="idea_submit_button" type="submit">
         Create a card!
       </button>
     </form>
+
+    <div id="idea_card" class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div id="display-area"></div>
+
+    <script src="./script.js"></script>
   </body>
 </html>
