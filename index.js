@@ -8,12 +8,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
+// ----- Templates -----
 app.set("view-engine", "ejs");
 
-console.log(__dirname);
-app.use(express.static("js"));
+// ----- Middleware -----
+app.use(express.static("./public"));
 
-// ROUTES -----------------------------------------
+// ----- Routes -----
 app.get("/", (req, res) => {
   res.render("welcome-page.ejs", { name: "David" });
 });
@@ -26,13 +27,15 @@ app.get("/create-card", (req, res) => {
   res.render("create-card.ejs");
 });
 
-// app.post("/create-card", (req, res) => {
-//   console.log("button clicked");
-//   res.send("clicked");
-// });
+app.post("/create-card", createCard);
 
 // app.get("/public/js", (req, res) => {
 //   res.render("test.ejs");
 // });
 
 // -------------------------------------------------
+
+// creating a card based on user input
+function createCard() {
+  console.log("calling createCard function");
+}
