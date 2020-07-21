@@ -37,5 +37,7 @@ app.post("/create-card", createCard);
 
 // creating a card based on user input
 function createCard() {
-  console.log("calling createCard function");
+  document.getElementById("my_form").addEventListener("submit", () => {
+    console.log("here");
+  });
 }
