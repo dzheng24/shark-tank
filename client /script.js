@@ -36,6 +36,13 @@ function createCard(title, description, url) {
   newDescription.innerHTML = description;
   newCardBody.appendChild(newDescription);
 
+  // adding a button
+  let newButton = document.createElement("a");
+  newButton.setAttribute("class", "btn btn-primary");
+  newButton.setAttribute("href", "#");
+  newButton.innerHTML = "Edit for Later";
+  newCardBody.appendChild(newButton);
+
   // append card to display area
   document.getElementById("display-area").appendChild(newCard);
 }
