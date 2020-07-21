@@ -13,7 +13,7 @@ router.get("/register", (req, res) => {
 
 //handling user sign up
 router.post("/register", (req, res) => {
-  var newUser = new User({
+  const newUser = new User({
     username: req.body.username,
     email: req.body.email,
   });

@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to Join the Sharktank and share your Idea!</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/stylesheets/main.css" />
-  </head>
+  <%- include ('../head_toes/header') %>
   <body>
-    <%- include ('../partials/navbar') %>
     <div class="container">
       <h1>Register</h1>
       <form action="/register" method="POST">
@@ -53,6 +41,6 @@
       </form>
       <a href="/login">Login</a>
     </div>
-    <%- include ('../partials/footer') %>
   </body>
+  <%- include ('../head_toes/footer') %>
 </html>
