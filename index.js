@@ -1,9 +1,31 @@
 // ----- Dependencies -----
-const express = require("express");
 require("dotenv").config();
-const bodyParser = require("body-parser");
+const express = require("express");
+const app = express();
 const ejs = require("ejs");
+const bodyParser = require("body-parser");
+const expressSanitizer = require("express-sanitizer");
+const mongoose = require("mongoose");
+const methodOverride = require("method-override");
+const flash = require("connect-flash");
+const cookieParser = require("cookie-parser");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const PORT = process.env.PORT || 3001;
+const session = require("express-session");
 
+//----------import .js --------------
+const User = require("./models/user.js");
+
+//-------MongoDB----------
+const url =
+  "mongodb+srv://TEAM5:kVuK4JvC91oMwWTD@cluster0.cn74u.mongodb.net/SharkTank?retryWrites=true&w=majority";
+mongoose.connect(url);
+
+// ----- Middleware -----
+app.use(express.static("./public"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // ----- Start the Server -----
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -11,11 +33,6 @@ app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
 // ----- Templates -----
 app.set("view-engine", "ejs");
-
-// ----- Middleware -----
-app.use(express.static("./public"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 // ----- ARRAY OF OBJECTS(CARD) -----
 let cardsArray = [];
