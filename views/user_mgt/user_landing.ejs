@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include ('../partials/header') %>
+  <%- include ('../head_toes/header') %>
   <body>
-    welcome!
+    <div class="row">
+      <div class="col-md-4">
+          <h1><%= user.firstName + " " + user.lastName %></h1>
+        <div class="thumbnail">
+          <img src="<%= user.avatar %>" alt="user profile image">
+          <div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <h3><%= user.username %>'s posts:</h3>
+          <p><%= user.firstName %> has not made any post yet.</p>
+      </div>
+    </div>
+
+
+
+    
+    <%- include ('../head_toes/footer') %>
   </body>
-  <%- include ('../partials/footer') %>
+  
 </html>
