@@ -1,6 +1,7 @@
 // ----- Dependencies -----
 const express = require("express");
 require("dotenv").config();
+const bodyParser = require("body-parser");
 const ejs = require("ejs");
 
 // ----- Start the Server -----
@@ -13,6 +14,11 @@ app.set("view-engine", "ejs");
 
 // ----- Middleware -----
 app.use(express.static("./public"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// ----- ARRAY OF OBJECTS(CARD) -----
+let cardsArray = [];
 
 // ----- Routes -----
 app.get("/", (req, res) => {
@@ -27,7 +33,18 @@ app.get("/create-card", (req, res) => {
   res.render("create-card.ejs");
 });
 
-app.post("/create-card", createCard);
+app.post("/create-card", (req, res) => {
+  let newTitle = req.body.titleInput;
+  let newDescription = req.body.descriptionInput;
+  let newImageURL = req.body.imageInput;
+  let newCard = {
+    title: newTitle,
+    description: newDescription,
+    url: newImageURL,
+  };
+  cardsArray.push(newCard);
+  return res.json(cardsArray);
+});
 
 // app.get("/public/js", (req, res) => {
 //   res.render("test.ejs");
@@ -36,8 +53,3 @@ app.post("/create-card", createCard);
 // -------------------------------------------------
 
 // creating a card based on user input
-function createCard() {
-  document.getElementById("my_form").addEventListener("submit", () => {
-    console.log("here");
-  });
-}

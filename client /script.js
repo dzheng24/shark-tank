@@ -4,6 +4,7 @@ document.getElementById("idea_form").addEventListener("submit", (e) => {
   let userInputDescription = document.getElementById("idea_description").value;
   let userInputURL = document.getElementById("idea_image_url").value;
   createCard(userInputTitle, userInputDescription, userInputURL);
+  console.log(userInputTitle.length);
 });
 
 // creating a card based on user input
@@ -27,22 +28,48 @@ function createCard(title, description, url) {
   // adding title
   let newTitle = document.createElement("h5");
   newTitle.setAttribute("class", "card-title");
-  newTitle.innerHTML = title;
+  let shortenedTitle = title.slice(0, 30);
+  newTitle.innerHTML = `${shortenedTitle}...`;
   newCardBody.appendChild(newTitle);
 
   // adding description
   let newDescription = document.createElement("p");
   newDescription.setAttribute("class", "card-text");
-  newDescription.innerHTML = description;
+  let shortendDescription = description.slice(0, 250);
+  newDescription.innerHTML = `${shortendDescription}...`;
   newCardBody.appendChild(newDescription);
 
   // adding a button
   let newButton = document.createElement("a");
   newButton.setAttribute("class", "btn btn-primary");
   newButton.setAttribute("href", "#");
-  newButton.innerHTML = "Edit for Later";
+  newButton.innerHTML = "Publish this card";
   newCardBody.appendChild(newButton);
+
+  // adding an edit button
+  // let editButton = document.createElement("a");
+  // editButton.setAttribute("class", "btn btn-warning");
+  // editButton.setAttribute("href", "#");
+  // editButton.innerHTML = "Edit";
+  // editButton.addEventListener("click", editCard);
+  // newCardBody.appendChild(editButton);
+
+  // adding a delete button
+  let deleteButton = document.createElement("a");
+  deleteButton.setAttribute("class", "btn btn-danger");
+  deleteButton.setAttribute("href", "#");
+  deleteButton.innerHTML = "Delete";
+  deleteButton.addEventListener("click", deleteCard);
+  newCardBody.appendChild(deleteButton);
 
   // append card to display area
   document.getElementById("display-area").appendChild(newCard);
 }
+
+// deleting a card
+function deleteCard(e) {
+  let card = e.target.parentElement.parentElement;
+  card.remove();
+}
+
+// edit a card
