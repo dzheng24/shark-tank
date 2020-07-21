@@ -7,5 +7,17 @@
   </head>
   <body>
     <h1>Write down your Ideas!</h1>
+
+    <form id="idea_form" action="/create-card" method="POST">
+      Title
+      <input type="text" placeholder="Idea Title" />
+      Ideas in Detail
+      <input type="text" placeholder="Describe your Idea" />
+      Image
+      <input type="text" placeholder="Enter a URL of the image" />
+      <button id="idea_submit_button" type="submit">Create a card!</button>
+    </form>
+
+    <script type="text/javascript" src="<% ../js/create-card.js %>"></script>
   </body>
 </html>
