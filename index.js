@@ -70,7 +70,18 @@ app.get("/create-card", (req, res) => {
   res.render("create-card.ejs");
 });
 
-app.post("/create-card", createCard);
+app.post("/create-card", (req, res) => {
+  let newTitle = req.body.titleInput;
+  let newDescription = req.body.descriptionInput;
+  let newImageURL = req.body.imageInput;
+  let newCard = {
+    title: newTitle,
+    description: newDescription,
+    url: newImageURL,
+  };
+  cardsArray.push(newCard);
+  return res.json(cardsArray);
+});
 
 // app.get("/public/js", (req, res) => {
 //   res.render("test.ejs");
@@ -78,10 +89,7 @@ app.post("/create-card", createCard);
 
 // -------------------------------------------------
 
-// creating a card based on user input
-function createCard() {
-  console.log("calling createCard function");
-}
+
 
 //------------PORT listening------------
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
