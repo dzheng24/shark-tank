@@ -5,6 +5,7 @@ var UserSchema = new mongoose.Schema({
   username: String,
   password: String,
   email: String,
+  profilePic: { type: String, default: "/resources/strong_shark.jpg" },
 });
 
 UserSchema.plugin(passportLocalMongoose);
