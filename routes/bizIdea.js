@@ -33,7 +33,7 @@ router.get("/display-page", (req, res) => {
 //data route
 
 //pull card from DB
-router.get("/bizIdeas", middlewareObj.isLoggedIn, (req, res) => {
+router.get("/bizIdeas", (req, res) => {
   BizIdea.find({}, (error, allBizIdeas) => {
     if (error) {
       console.log(error);
