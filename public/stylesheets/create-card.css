@@ -1,7 +1,13 @@
-body {
+body,
+html {
   background-image: url("../resources/bg1.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
+  font-family: "Sora", sans-serif;
+}
+
+#main-content {
+  margin-top: 20px;
 }
