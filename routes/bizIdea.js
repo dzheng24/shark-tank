@@ -15,7 +15,7 @@ router.post("/create-card", middlewareObj.isLoggedIn, (req, res) => {
     title: req.body.titleInput,
     description: req.body.descriptionInput,
     image_url: req.body.imageInput,
-    // owner: { id: req.user._id },
+    owner: { id: req.user._id, username: req.user.username },
   });
   BizIdea.create(newBizIdea, (error) => {
     if (error) {
