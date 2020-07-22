@@ -19,9 +19,8 @@ const User = require("./models/user.js");
 const BizIdea = require("./models/bizIdea");
 
 //-------MongoDB----------
-const url =
-  "mongodb+srv://TEAM5:kVuK4JvC91oMwWTD@cluster0.cn74u.mongodb.net/SharkTank?retryWrites=true&w=majority";
-mongoose.connect(url);
+const URI = process.env.DB_URI;
+mongoose.connect(URI);
 
 //------use package----
 app.use(methodOverride("_method"));
