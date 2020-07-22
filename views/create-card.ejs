@@ -30,31 +30,51 @@
             </p>
           </header>
 
-    <form id="idea_form" action="/create-card" method="POST">
-      <label for="titleInput">Title</label>
-      <input
-        id="titleInput"
-        name="titleInput"
-        type="text"
-        placeholder="Idea Title"
-      />
-      <label for="descriptionInput">Ideas in Detail</label>
-      <input
-        id="descriptionInput"
-        name="descriptionInput"
-        type="text"
-        placeholder="Describe your Idea"
-      />
-      <label for="imageInput">Image URL</label>
-      <input
-        id="imageInput"
-        name="imageInput"
-        type="text"
-        placeholder="Enter a URL of the image"
-      />
-      <button id="idea_submit_button" type="submit">
-        Create a card!
-      </button>
-    </form>
+          <!-- BOOTSTRAP FORM -->
+          <form id="idea_form" action="/create-card" method="POST">
+            <div class="form-group">
+              <label for="titleInput">Idea Title</label>
+              <input
+                type="text"
+                required
+                class="form-control"
+                name="titleInput"
+                id="titleInput"
+                placeholder="Enter an idea"
+              />
+            </div>
+            <div class="form-group">
+              <label for="descriptionInput">Ideas in Detail</label>
+              <textarea
+                class="form-control"
+                name="descriptionInput"
+                id="descriptionInput"
+                required
+                rows="9"
+                placeholder="Enter your ideas in detail"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="imageInput">Photo URL</label>
+              <input
+                type="url"
+                class="form-control"
+                name="imageInput"
+                id="imageInput"
+                placeholder="Enter an image url"
+              />
+            </div>
+            <button
+              id="idea_submit_button"
+              class="btn btn-primary"
+              type="submit"
+            >
+              Create a card!
+            </button>
+          </form>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
   </body>
 </html>
