@@ -1,37 +1,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Please Login in</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+  <title>Shark Tank</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
   <link rel="stylesheet" href="/stylesheets/main.css" />
 </head>
 <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="navbar-header">
+  <a class="navbar-brand" href="/display-page">SharkTank</a>
+</div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if(!currentUser){ %>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Sign Up</a></li>
-      <% } else { %>
-      <li>
-        <a href="/users/<%=currentUser.id %>">Hello! <%= currentUser.username %></a>
-      </li>
-      <li><a href="/logout">Logout</a></li>
-      <% } %>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+    <form id="search-bar" class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
       <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
         Search
       </button>
     </form>
+    <ul class="navbar-nav mr-auto">
+      <% if(!currentUser){ %>
+      <li id="navButton"><a href="/login">Login</a></li>
+      <li id="navButton"><a href="/register">Sign Up</a></li>
+      <% } else { %>
+      <li id="navButton">
+        <a href="/users/<%=currentUser.id %>"
+          id="navButton" >Hello! <%= currentUser.username %></a
+        >
+      </li id="navButton">
+      <li><a href="/logout" id="navButton">Logout</a></li>
+      <% } %>
+    </ul>
+
   </div>
 </nav>

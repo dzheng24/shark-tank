@@ -4,12 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome Page</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/welcome-page.css" />
   </head>
   <body>
-    <h1>Welcome to Shark Tank</h1>
+    <div class="landing-page">
+      <div class="page-content">
+        <h1>Welcome to Shark Tank</h1>
 
-    <a href="/display-page">Check Our Display Page</a>
-
-    <a href="/create-card">Link to Create a Card</a>
+        <a href="/display-page">Get Start</a>
+      </div>
+    </div>
+    <%- include ('./head_toes/footer') %>
   </body>
 </html>
