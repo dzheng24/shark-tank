@@ -1,14 +1,9 @@
-document.getElementById("idea_form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  let userInputTitle = document.getElementById("idea_title").value;
-  let userInputDescription = document.getElementById("idea_description").value;
-  let userInputURL = document.getElementById("idea_image_url").value;
-  createCard(userInputTitle, userInputDescription, userInputURL);
-  console.log(userInputTitle.length);
-});
+//comment fetch bizIdea
+fetch("/bizIdeas")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
 
-// creating a card based on user input
-function createCard(title, description, url)
+function createCard(title, description, url) {
   // make new card
   let newCard = document.createElement("div");
   newCard.setAttribute("class", "card");
@@ -65,11 +60,3 @@ function createCard(title, description, url)
   // append card to display area
   document.getElementById("display-area").appendChild(newCard);
 }
-
-// deleting a card
-function deleteCard(e) {
-  let card = e.target.parentElement.parentElement;
-  card.remove();
-}
-
-// edit a card

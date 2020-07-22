@@ -69,9 +69,11 @@ app.get("/", (req, res) => {
 });
 //----------------------------
 
+/*
 app.get("/display-page", (req, res) => {
   res.render("display-page.ejs");
 });
+*/
 
 // app.post("/create-card", (req, res) => {
 //   let newTitle = req.body.titleInput;
