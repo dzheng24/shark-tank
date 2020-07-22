@@ -1,62 +1,72 @@
 //comment fetch bizIdea
 fetch("/bizIdeas")
   .then((response) => response.json())
-  .then((data) => console.log(data));
+  .then((ideas) => createCard(ideas));
 
-function createCard(title, description, url) {
-  // make new card
-  let newCard = document.createElement("div");
-  newCard.setAttribute("class", "card");
-  newCard.style.width = "18rem";
+function createCard(data) {
+  // looping through the ideas array
+  for (let i = 0; i < data.length; i++) {
+    // make new card
+    let newCard = document.createElement("div");
+    newCard.setAttribute("class", "card");
 
-  // make image on top
-  let newImage = document.createElement("img");
-  newImage.setAttribute("class", "card-img-top");
-  newImage.setAttribute("src", `${url}`);
-  newCard.appendChild(newImage);
+    // make image on top
+    let newImage = document.createElement("img");
+    newImage.setAttribute("class", "card-img-top");
+    if (`${data[i].image_url}`.length < 10) {
+      newImage.setAttribute(
+        "src",
+        "https://hbr.org/resources/images/article_assets/2018/11/nov18_16_738790199.jpg"
+      );
+    } else {
+      newImage.setAttribute("src", `${data[i].image_url}`);
+    }
 
-  // make card body
-  let newCardBody = document.createElement("div");
-  newCardBody.setAttribute("class", "card-body");
-  newCard.appendChild(newCardBody);
+    newCard.appendChild(newImage);
 
-  // adding title
-  let newTitle = document.createElement("h5");
-  newTitle.setAttribute("class", "card-title");
-  let shortenedTitle = title.slice(0, 30);
-  newTitle.innerHTML = `${shortenedTitle}...`;
-  newCardBody.appendChild(newTitle);
+    // make card body
+    let newCardBody = document.createElement("div");
+    newCardBody.setAttribute("class", "card-body");
+    newCard.appendChild(newCardBody);
 
-  // adding description
-  let newDescription = document.createElement("p");
-  newDescription.setAttribute("class", "card-text");
-  let shortendDescription = description.slice(0, 250);
-  newDescription.innerHTML = `${shortendDescription}...`;
-  newCardBody.appendChild(newDescription);
+    // adding title
+    let newTitle = document.createElement("h5");
+    newTitle.setAttribute("class", "card-title");
+    newTitle.innerHTML = `${data[i].title}`;
+    newCardBody.appendChild(newTitle);
 
-  // adding a button
-  let newButton = document.createElement("a");
-  newButton.setAttribute("class", "btn btn-primary");
-  newButton.setAttribute("href", "#");
-  newButton.innerHTML = "Publish this card";
-  newCardBody.appendChild(newButton);
+    // adding description
+    let newDescription = document.createElement("p");
+    newDescription.setAttribute("class", "card-text");
+    newDescription.innerHTML = `${data[i].description}`;
+    // let shortendDescription = newDescription.slice(0, 250);
+    // newDescription.innerHTML = `${shortendDescription}...`;
+    newCardBody.appendChild(newDescription);
 
-  // adding an edit button
-  // let editButton = document.createElement("a");
-  // editButton.setAttribute("class", "btn btn-warning");
-  // editButton.setAttribute("href", "#");
-  // editButton.innerHTML = "Edit";
-  // editButton.addEventListener("click", editCard);
-  // newCardBody.appendChild(editButton);
+    // adding a button
+    let newButton = document.createElement("a");
+    newButton.setAttribute(
+      "class",
+      "btn btn-outline-secondary my-2 my-sm-0 my-blue-btn"
+    );
+    newButton.setAttribute("href", "#");
+    newButton.innerHTML = "Edit for Later";
+    newCardBody.appendChild(newButton);
 
-  // adding a delete button
-  let deleteButton = document.createElement("a");
-  deleteButton.setAttribute("class", "btn btn-danger");
-  deleteButton.setAttribute("href", "#");
-  deleteButton.innerHTML = "Delete";
-  deleteButton.addEventListener("click", deleteCard);
-  newCardBody.appendChild(deleteButton);
+    // adding a delete button
+    let deleteButton = document.createElement("a");
+    deleteButton.setAttribute(
+      "class",
+      "btn btn-outline-secondary my-2 my-sm-0 my-red-btn"
+    );
+    deleteButton.setAttribute("href", "#");
+    deleteButton.innerHTML = "Edit for Later";
+    deleteButton.addEventListener("click", () =>
+      console.log("clicking on delete button")
+    );
+    newCardBody.appendChild(deleteButton);
 
-  // append card to display area
-  document.getElementById("display-area").appendChild(newCard);
+    // append card to display area
+    document.getElementById("display-area").appendChild(newCard);
+  }
 }
