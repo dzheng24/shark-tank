@@ -16,6 +16,7 @@ const session = require("express-session");
 
 //----------import .js --------------
 const User = require("./models/user.js");
+const BizIdea = require("./models/bizIdea");
 
 //-------MongoDB----------
 const url =
@@ -26,9 +27,11 @@ mongoose.connect(url);
 app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 app.set("view-engine", "ejs");
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(cookieParser("secret"));
 
 //config passort -----------
@@ -58,6 +61,9 @@ app.use((req, res, next) => {
 const indexRoutes = require("./routes/index.js");
 app.use(indexRoutes);
 
+const bizIdeaRoutes = require("./routes/bizIdea.js");
+app.use(bizIdeaRoutes);
+
 // ----- Routes -----
 app.get("/", (req, res) => {
   res.render("welcome-page.ejs");
@@ -68,30 +74,24 @@ app.get("/display-page", (req, res) => {
   res.render("display-page.ejs");
 });
 
-app.get("/create-card", (req, res) => {
-  res.render("create-card.ejs");
-});
-
-app.post("/create-card", (req, res) => {
-  let newTitle = req.body.titleInput;
-  let newDescription = req.body.descriptionInput;
-  let newImageURL = req.body.imageInput;
-  let newCard = {
-    title: newTitle,
-    description: newDescription,
-    url: newImageURL,
-  };
-  cardsArray.push(newCard);
-  return res.json(cardsArray);
-});
+// app.post("/create-card", (req, res) => {
+//   let newTitle = req.body.titleInput;
+//   let newDescription = req.body.descriptionInput;
+//   let newImageURL = req.body.imageInput;
+//   let newCard = {
+//     title: newTitle,
+//     description: newDescription,
+//     url: newImageURL,
+//   };
+//   cardsArray.push(newCard);
+//   return res.json(cardsArray);
+// });
 
 // app.get("/public/js", (req, res) => {
 //   res.render("test.ejs");
 // });
 
 // -------------------------------------------------
-
-
 
 //------------PORT listening------------
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
