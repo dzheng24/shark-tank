@@ -4,9 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create A Card</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/create-card.css" />
   </head>
   <body>
-    <h1>Write down your Ideas!</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" id="main-content">
+          <header class="text-center">
+            <h1>Write down your Ideas!</h1>
+            <p class="lead">
+              By writing down some ideas that you have for a new project, or
+              business, Shark Tank will create a simple "notecard" to record
+              your idea.
+            </p>
+          </header>
 
     <form id="idea_form" action="/create-card" method="POST">
       <label for="titleInput">Title</label>

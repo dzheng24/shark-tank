@@ -8,7 +8,7 @@ function createCard(data) {
   for (let i = 0; i < data.length; i++) {
     // make new card
     let newCard = document.createElement("div");
-    newCard.setAttribute("class", "card");
+    newCard.setAttribute("class", "card zoom");
 
     // make image on top
     let newImage = document.createElement("img");
@@ -64,6 +64,6 @@ function createCard(data) {
     newCardBody.appendChild(deleteButton);
 
     // append card to display area
-    document.getElementById("display-area").appendChild(newCard);
+    document.getElementById("display-area").prepend(newCard);
   }
 }
