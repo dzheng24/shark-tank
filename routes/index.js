@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var User = require("../models/user");
 var passport = require("passport");
+const bizIdea = require("../models/bizIdea");
 
 /***
  * sign up logic
@@ -16,13 +17,14 @@ router.post("/register", (req, res) => {
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
+    profiePic: req.body.profiePic,
   });
-  User.register(newUser, req.body.password, function (err, user) {
+  User.register(newUser, req.body.password, (err, user) => {
     if (err) {
       req.flash("error", err.message);
       res.redirect("/register");
     } else {
-      passport.authenticate("local")(req, res, function () {
+      passport.authenticate("local")(req, res, () => {
         req.flash("success", "Welcome to SharkTank! " + user.username);
         res.redirect("/");
       });
@@ -60,16 +62,29 @@ router.get("/logout", function (req, res) {
 /**
  * user profile page
  */
-router.get("/users/:id", function (req, res) {
-  User.findById(req.params.id, function (err, foundUser) {
+router.get("/users/:id", (req, res) => {
+  User.findById(req.params.id, (err, foundUser) => {
     if (err) {
-      req.flash("error", "Something went wrong");
+      req.flash("error", "we are brainstorming....");
       res.redirect("/");
     } else {
-            res.render("user_mgt/user_landing.ejs", { user: foundUser});
+      bizIdea
+        .find()
+        .where("owner.id")
+        .equals(foundUser._id)
+        .exec((error, foundCard) => {
+          if (error) {
+            req.flash("error", "we are brainstorming....");
+            res.redirect("/displage-page.ejs");
+          } else {
+            res.render("user_mgt/user_landing.ejs", {
+              user: foundUser,
+              bizIdeas: foundCard,
+            });
           }
-})
-
+        });
+    }
+  });
 });
 
 module.exports = router;

@@ -14,10 +14,7 @@ function createCard(data) {
     let newImage = document.createElement("img");
     newImage.setAttribute("class", "card-img-top");
     if (`${data[i].image_url}`.length < 10) {
-      newImage.setAttribute(
-        "src",
-        "https://hbr.org/resources/images/article_assets/2018/11/nov18_16_738790199.jpg"
-      );
+      newImage.setAttribute("src", "/resources/strong_shark.jpg");
     } else {
       newImage.setAttribute("src", `${data[i].image_url}`);
     }
