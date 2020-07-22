@@ -66,20 +66,10 @@ router.get("/users/:id", function (req, res) {
       req.flash("error", "Something went wrong");
       res.redirect("/");
     } else {
-      j_food
-        .find()
-        .where("author.id")
-        .equals(foundUser._id)
-        .exec(function (err, foodFound) {
-          if (err) {
-            req.flash("error", "Something went wrong...");
-            res.redirect("/j_foods");
-          } else {
-            res.render("users/show", { user: foundUser, j_foods: foodFound });
+            res.render("user_mgt/user_landing.ejs", { user: foundUser});
           }
-        });
-    }
-  });
+})
+
 });
 
 module.exports = router;
