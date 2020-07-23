@@ -34,9 +34,12 @@ function createCard(data) {
     // adding description
     let newDescription = document.createElement("p");
     newDescription.setAttribute("class", "card-text");
-    newDescription.innerHTML = `${data[i].description}`;
-    // let shortendDescription = newDescription.slice(0, 250);
-    // newDescription.innerHTML = `${shortendDescription}...`;
+    if (data[i].description.length > 10) {
+      let shortened = data[i].description.substr(0, 10);
+      newDescription.innerHTML = `${shortened}...`;
+    } else {
+      newDescription.innerHTML = data[i].description;
+    }
     newCardBody.appendChild(newDescription);
 
     // add button container
