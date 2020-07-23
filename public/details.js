@@ -5,7 +5,9 @@ fetch("/bizIdeas")
 function createDetails(data) {
   // find the id in the address bar
   let address = window.location.href;
-  let id = address.split("details-page:")[1];
+  console.log(address);
+  let id = address.split("details-page/")[1];
+  console.log(id);
 
   // loop over the array of data, when the id matches, display the information
   for (let i = 0; i < data.length; i++) {
@@ -52,7 +54,7 @@ function createDetails(data) {
         "class",
         "btn btn-outline-secondary my-2 my-sm-0 btn-warning"
       );
-      editButton.setAttribute("href", `/edit:${data[i]._id}`);
+      editButton.setAttribute("href", `/${id}/edit`);
       editButton.innerHTML = "Edit";
       newButtonContainer.appendChild(editButton);
 
@@ -62,7 +64,7 @@ function createDetails(data) {
         "class",
         "btn btn-outline-secondary my-2 my-sm-0 btn-danger"
       );
-      deleteButton.setAttribute("href", `/details-page:${data[i]._id}`);
+      deleteButton.setAttribute("href", "#");
       deleteButton.innerHTML = "Delete";
       newButtonContainer.appendChild(deleteButton);
 

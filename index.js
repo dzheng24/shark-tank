@@ -14,7 +14,7 @@ const LocalStrategy = require("passport-local");
 const PORT = process.env.PORT || 3001;
 const session = require("express-session");
 
-//----------import .js --------------
+//----------import schemas --------------
 const User = require("./models/user.js");
 const BizIdea = require("./models/bizIdea");
 
@@ -23,17 +23,20 @@ const URI = process.env.DB_URI;
 mongoose.connect(URI);
 
 //------use package----
-app.use(methodOverride("_method"));
-app.use(express.static(__dirname + "/public"));
-app.set("view-engine", "ejs");
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
+app.use(bodyParser.json());
+app.use(expressSanitizer());
+app.set("view-engine", "ejs");
+app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 app.use(cookieParser("secret"));
 
-//config passort -----------
+//config passport -----------
+
 app.use(
   session({
     secret: "rickyz",
@@ -67,32 +70,6 @@ app.use(bizIdeaRoutes);
 app.get("/", (req, res) => {
   res.render("welcome-page.ejs");
 });
-//----------------------------
-
-/*
-app.get("/display-page", (req, res) => {
-  res.render("display-page.ejs");
-});
-*/
-
-// app.post("/create-card", (req, res) => {
-//   let newTitle = req.body.titleInput;
-//   let newDescription = req.body.descriptionInput;
-//   let newImageURL = req.body.imageInput;
-//   let newCard = {
-//     title: newTitle,
-//     description: newDescription,
-//     url: newImageURL,
-//   };
-//   cardsArray.push(newCard);
-//   return res.json(cardsArray);
-// });
-
-// app.get("/public/js", (req, res) => {
-//   res.render("test.ejs");
-// });
-
-// -------------------------------------------------
 
 //------------PORT listening------------
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));

@@ -5,41 +5,40 @@
     <div class="container">
       <div class="row">
         <div col-lg-12 col-md-12 col-sm-12>
-          <h1 style="text-align: center;">Edit %=bizIdea.title %</h1>
+          <h1 style="text-align: center;">Edit <%=bizIdea.title %></h1>
           <div style="width: 30%; margin: 25px auto;">
-            <form
-              action="/details-page:%=bizIdea._id %?_method=PUT"
-              method="POST"
-              enctype="multipart/form-data"
-            >
+            <form action="/details-page/<%=bizIdea._id %>" method="POST">
               <div class="form-group">
-                <label for="bizIdea_title">Title</label>
+                <label for="title">Title</label>
                 <input
                   class="form-control"
                   type="text"
-                  name="bizIdea_title"
-                  value="%= bizIdea.title %"
+                  name="title"
+                  value="<%= bizIdea.title %>"
                 />
               </div>
               <div class="form-group">
-                <label for="image"
+                <label for="image_url"
                   >New Image (Leave empty if not updating)</label
                 >
-                <input type="url" id="image" name="image" />
+                <input type="url" id="image" name="image_url" />
               </div>
               <div class="form-group">
-                <label for="bizIdea_decription">Description</label>
+                <label for="description">Description</label>
                 <input
                   class="form-control"
                   type="text"
-                  name="bizIdea_decription"
-                  value="%= bizIdea.description%"
+                  name="description"
+                  value="<%= bizIdea.description%>"
                 />
+              </div>
               <div class="form-group">
                 <button class="btn btn-lg btn-primary btn-block">Submit</button>
               </div>
             </form>
-            <a href="//details-page:%=bizIdea._id %" class="btn btn-xs btn-warning"
+            <a
+              href="/details-page/<%=bizIdea._id %>"
+              class="btn btn-xs btn-warning"
               >Go Back</a
             >
           </div>
