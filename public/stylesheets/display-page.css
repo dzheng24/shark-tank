@@ -2,6 +2,7 @@ body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  font-family: "Sora", sans-serif;
 }
 
 @keyframes fadeInAnimation {
