@@ -52,7 +52,7 @@ function createDetails(data) {
         "class",
         "btn btn-outline-secondary my-2 my-sm-0 btn-warning"
       );
-      editButton.setAttribute("href", `/details-page:${data[i]._id}`);
+      editButton.setAttribute("href", `/edit:${data[i]._id}`);
       editButton.innerHTML = "Edit";
       newButtonContainer.appendChild(editButton);
 
