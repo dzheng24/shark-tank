@@ -17,26 +17,18 @@
       <div class="col-md-8">
         <h3><%= user.username %>'s posts:</h3>
 
-        <% let count = 0 %>
-        <% bizIdeas.forEach((idea)=> { %>
-          <% count++ %>
-        <% }); %>
-        <% if(count != 0){ %>
-          <ul class="list-group">
-          
+        <% let count = 0 %> <% bizIdeas.forEach((idea)=> { %> <% count++ %> <%
+        }); %> <% if(count != 0){ %>
+        <ul class="list-group">
           <% bizIdeas.forEach(function(idea) { %>
-            <li class="list-group-item"><%= idea.title %></a></li>
+          <li class="list-group-item">
+            <a href="/details-page/<%= idea._id %>"><%= idea.title %></a>
+          </li>
           <% }); %>
-          </ul>
+        </ul>
         <% } else { %>
-          <p>you have not made any post yet.</p>
+        <p>you have not made any post yet.</p>
         <% } %>
-
-
-
-
-
-        
       </div>
     </div>
 
