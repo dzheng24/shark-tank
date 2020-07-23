@@ -1,17 +1,12 @@
 #display-area {
   opacity: 0.8;
   width: 45vw;
+  height: 20px;
 }
 
 #page-container {
   position: relative;
   min-height: 90vh;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  margin-top: 20px;
 }
 
 h1 {
