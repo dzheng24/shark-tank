@@ -73,13 +73,30 @@ router.get("/:id/edit", middlewareObj.checkIdeaOwnership, (req, res) => {
 });
 
 //UPDATE ROUTE==========================
-router.put("/details-page/:id", middleware.checkIdeaOwnership, (req, res) => {
-  bizIdea.findByIdAndUpdate(req.params.id, req.body.bizIdea, (err) => {
+router.post("/details-page/:id", middleware.checkIdeaOwnership, (req, res) => {
+  // if (req.body.image_url === "") {
+  //   delete req.body.image_url;
+  // }
+  const { title, image_url, description } = req.body;
+  const newBizIdea = {};
+  if (title && title.length > 0) {
+    newBizIdea.title = title;
+  }
+
+  if (description && description.length > 0) {
+    newBizIdea.description = description;
+  }
+
+  if (image_url && image_url.length > 0) {
+    newBizIdea.image_url = image_url;
+  }
+
+  bizIdea.findByIdAndUpdate(req.params.id, newBizIdea, (err) => {
     if (err) {
       res.redirect("/display-page");
     } else {
       req.flash("success", "post successfully updated.");
-      res.redirect("/dispaly-page/" + req.params.id);
+      res.redirect("/details-page/" + req.params.id);
     }
   });
 });
