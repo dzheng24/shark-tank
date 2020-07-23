@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ('./head_toes/header') %>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div col-lg-12 col-md-12 col-sm-12>
+          <h1 style="text-align: center;">Edit %=bizIdea.title %</h1>
+          <div style="width: 30%; margin: 25px auto;">
+            <form
+              action="/details-page:%=bizIdea._id %?_method=PUT"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <div class="form-group">
+                <label for="bizIdea_title">Title</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="bizIdea_title"
+                  value="%= bizIdea.title %"
+                />
+              </div>
+              <div class="form-group">
+                <label for="image"
+                  >New Image (Leave empty if not updating)</label
+                >
+                <input type="url" id="image" name="image" />
+              </div>
+              <div class="form-group">
+                <label for="bizIdea_decription">Description</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="bizIdea_decription"
+                  value="%= bizIdea.description%"
+                />
+              <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Submit</button>
+              </div>
+            </form>
+            <a href="//details-page:%=bizIdea._id %" class="btn btn-xs btn-warning"
+              >Go Back</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include ('./head_toes/footer') %>
+</html>
