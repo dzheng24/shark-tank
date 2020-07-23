@@ -22,7 +22,7 @@
   background-attachment: fixed;
   background-size: cover;
   opacity: 0.9;
-  animation: anim 25s linear infinite;
+  animation: anim 40s linear infinite;
 }
 @keyframes anim {
   50% {

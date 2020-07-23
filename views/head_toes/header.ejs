@@ -11,22 +11,22 @@
   <link rel="stylesheet" href="/stylesheets/main.css" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
 </head>
-<nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar">
   <div class="navbar-header">
   <a class="navbar-brand" href="/display-page">SharkTank</a>
 </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form id="search-bar" class="form-inline my-2 my-lg-0">
+    <form id="search-bar" class="form-inline my-2 my-lg-0" action="/display-page" method="GET">
       <input
         class="form-control mr-sm-2"
         type="search"
-        placeholder="Search"
-        aria-label="Search"
+        name="search"
+        placeholder="Search for Million dollar Ideas"
       />
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+      <input class="btn btn-outline-secondary my-2 my-sm-0" type="submit" value="SEARCH">
         Search
-      </button>
+    </input>
     </form>
     <ul class="navbar-nav mr-auto">
       <% if(!currentUser){ %>
@@ -44,3 +44,13 @@
 
   </div>
 </nav>
+<div class="container" id="message_box">
+  <% if(error && error.length > 0) { %>
+    <div class="alert alert-danger"><p><%=error %></p></div>
+  <% } %>
+  
+  <% if(success && success.length > 0) { %>
+    <div class="alert alert-success"><p><%= success %></p></div>
+  <% } %>
+</div>
+<div class="container">
