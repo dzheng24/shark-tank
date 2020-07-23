@@ -59,7 +59,7 @@ router.get("/details-page/:id", (req, res) => {
 });
 
 //edit business Idea
-router.get("/:id/edit", middlewareObj.checkIdeaOwnership, (req, res) => {
+router.get("/edit:id", middlewareObj.checkIdeaOwnership, (req, res) => {
   //find Idea ID in DB
   bizIdea.findById(req.params.id, (err, foundIdea) => {
     if (err) {
