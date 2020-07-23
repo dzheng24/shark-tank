@@ -68,6 +68,13 @@ function createDetails(data) {
       deleteButton.innerHTML = "Delete";
       newButtonContainer.appendChild(deleteButton);
 
+      //addeventListner to delete button, then fetch to delete route.
+      deleteButton.addEventListener("click", () => {
+        fetch("/details-page/:id", {
+          method: "delete",
+        });
+      });
+
       // append card to display area
       document.getElementById("display-area").prepend(newCard);
     }
