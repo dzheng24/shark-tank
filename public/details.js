@@ -78,7 +78,9 @@ function createDetails(data) {
       //addeventListner to delete button, then fetch to delete route.
       deleteButton.addEventListener("click", () => {
         fetch(`/details-page/delete/${id}`, {
-          method: "post",
+          method: "delete",
+        }).then((res) => {
+          window.location.pathname = "/display-page";
         });
       });
       */

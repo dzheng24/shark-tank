@@ -7,19 +7,22 @@
   <body>
     <div class="row">
       <div id="body-col-one" class="col-md-4">
-        <h1 id="user-name">Shark <%= user.username %></h1>
-
-        <div class="thumbnail">
-          <img
-            id="user-image"
-            src="<%= user.profilePic %>"
-            alt="user profile image"
-          />
-          <div class="caption">
-            <a href="mailto:<%= user.email %>"><%= user.email %></a>
+        <div class="container" id="user-profile-container">
+          <h1 id="user-name">Shark <%= user.username %></h1>
+          <div class="thumbnail">
+            <img
+              id="user-image"
+              src="<%= user.profilePic %>"
+              alt="user profile image"
+            />
+            <div class="caption">
+              <a href="mailto:<%= user.email %>"><%= user.email %></a>
+            </div>
           </div>
         </div>
-        <div class="col-md-8">
+      </div>
+      <div class="col-md-8">
+        <div class="container" id="user-idea-container">
           <h3><%= user.username %>'s posts:</h3>
 
           <% let count = 0 %> <% bizIdeas.forEach((idea)=> { %> <% count++ %> <%
@@ -37,6 +40,7 @@
         </div>
       </div>
     </div>
+
     <div id="footer"><%- include ('../head_toes/footer') %></div>
   </body>
 </html>

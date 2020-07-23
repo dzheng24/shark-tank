@@ -74,9 +74,6 @@ router.get("/:id/edit", middlewareObj.checkIdeaOwnership, (req, res) => {
 
 //UPDATE ROUTE==========================
 router.post("/details-page/:id", middleware.checkIdeaOwnership, (req, res) => {
-  // if (req.body.image_url === "") {
-  //   delete req.body.image_url;
-  // }
   const { title, image_url, description } = req.body;
   const newBizIdea = {};
   if (title && title.length > 0) {
