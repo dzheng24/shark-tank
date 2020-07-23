@@ -8,7 +8,7 @@ function createCard(data) {
   for (let i = 0; i < data.length; i++) {
     // make new card
     let newCard = document.createElement("div");
-    newCard.setAttribute("class", "card zoom");
+    newCard.setAttribute("class", "card");
 
     // make image on top
     let newImage = document.createElement("img");
@@ -51,7 +51,7 @@ function createCard(data) {
       "class",
       "btn btn-outline-secondary my-2 my-sm-0 my-blue-btn"
     );
-    newButton.setAttribute("href", "#");
+    newButton.setAttribute("href", `/details-page:${data[i]._id}`);
     newButton.innerHTML = "More Details";
     newButtonContainer.appendChild(newButton);
 

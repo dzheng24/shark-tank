@@ -43,4 +43,11 @@ router.get("/bizIdeas", (req, res) => {
   });
 });
 
+// details page
+router.get("/details-page:id", (req, res) => {
+  res.render("details-page.ejs");
+  let id = req.params.id;
+  console.log(id);
+});
+
 module.exports = router;
