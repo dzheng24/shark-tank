@@ -11,7 +11,7 @@ router.get("/create-card", (req, res) => {
 });
 // create a card
 router.post("/create-card", middlewareObj.isLoggedIn, (req, res) => {
-  if ((req.body.imageInput = "")) {
+  if (req.body.imageInput === "") {
     req.body.imageInput = undefined;
   }
   let newBizIdea = new BizIdea({
