@@ -36,14 +36,24 @@ router.get("/display-page", (req, res) => {
 //data route
 
 //pull card from DB
-router.get("/bizIdeas", (req, res) => {
-  BizIdea.find({}, (error, allBizIdeas) => {
-    if (error) {
-      console.log(error);
-    } else {
-      res.json(allBizIdeas);
-    }
-  });
+router.get("/bizIdeas", (req, res, next) => {
+  if (req.query.search) {
+    BizIdea.find({ title: req.query.search }, (error, searchResult) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.json(searchResult);
+      }
+    });
+  } else {
+    BizIdea.find({}, (error, allBizIdeas) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.json(allBizIdeas);
+      }
+    });
+  }
 });
 
 // details page
