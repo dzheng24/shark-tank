@@ -1,0 +1,44 @@
+body {
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    font-family: "Sora", sans-serif;
+}
+
+@keyframes fadeInAnimation {
+    10% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#body-col-one {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+}
+
+#user-name {
+    color: ivory;
+    margin-top: 10%;
+}
+
+#user-image {
+    border-radius: 50%;
+}
+
+
+
+#body-col-two {
+    margin-top: 10%;
+}
+
+#footer {
+    display: flex;
+    align-items: flex-end;
+}
