@@ -58,22 +58,30 @@ function createDetails(data) {
       editButton.innerHTML = "Edit";
       newButtonContainer.appendChild(editButton);
 
+      let delete_form = document.createElement("form");
+      delete_form.setAttribute("class", "delete-form");
+      delete_form.setAttribute("action", `/details-page/delete/${id}`);
+      delete_form.setAttribute("method", "POST");
+      newButtonContainer.appendChild(delete_form);
+
       // adding "DELETE" button
-      let deleteButton = document.createElement("a");
+      let deleteButton = document.createElement("button");
       deleteButton.setAttribute(
         "class",
         "btn btn-outline-secondary my-2 my-sm-0 btn-danger"
       );
-      deleteButton.setAttribute("href", "#");
+      // deleteButton.setAttribute("href", "/display-page");
       deleteButton.innerHTML = "Delete";
-      newButtonContainer.appendChild(deleteButton);
+      delete_form.appendChild(deleteButton);
 
+      /*
       //addeventListner to delete button, then fetch to delete route.
       deleteButton.addEventListener("click", () => {
-        fetch("/details-page/:id", {
-          method: "delete",
+        fetch(`/details-page/delete/${id}`, {
+          method: "post",
         });
       });
+      */
 
       // append card to display area
       document.getElementById("display-area").prepend(newCard);

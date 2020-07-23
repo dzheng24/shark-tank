@@ -102,16 +102,16 @@ router.post("/details-page/:id", middleware.checkIdeaOwnership, (req, res) => {
 });
 
 //DELETE ROUTE===========================================
-router.delete(
-  "/details-page/:id",
+router.post(
+  "/details-page/delete/:id",
   middleware.checkIdeaOwnership,
   (req, res) => {
     bizIdea.findByIdAndRemove(req.params.id, function (err) {
       if (err) {
-        res.redirect("/display-card");
+        res.redirect("/display-page");
       } else {
         req.flash("success", "post successfully deleted.");
-        res.redirect("/display-card");
+        res.redirect("/display-page");
       }
     });
   }
