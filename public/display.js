@@ -13,11 +13,10 @@ function createCard(data) {
     // make image on top
     let newImage = document.createElement("img");
     newImage.setAttribute("class", "card-img-top");
-    if (`${data[i].image_url}`.length < 10) {
+    /* if (`${data[i].image_url}`.length < 10) {
       newImage.setAttribute("src", "/resources/strong_shark.jpg");
-    } else {
-      newImage.setAttribute("src", `${data[i].image_url}`);
-    }
+    } else { */
+    newImage.setAttribute("src", `${data[i].image_url}`);
 
     newCard.appendChild(newImage);
 
@@ -51,7 +50,7 @@ function createCard(data) {
       "class",
       "btn btn-outline-secondary my-2 my-sm-0 my-blue-btn"
     );
-    newButton.setAttribute("href", `/details-page:${data[i]._id}`);
+    newButton.setAttribute("href", `/details-page/${data[i]._id}`);
     newButton.innerHTML = "More Details";
     newButtonContainer.appendChild(newButton);
 

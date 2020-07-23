@@ -11,13 +11,14 @@ middlewareObj.isLoggedIn = function (req, res, next) {
 
 middlewareObj.checkIdeaOwnership = function (req, res, next) {
   if (req.isAuthenticated()) {
+    console.log(req.params.id);
     bizIdea.findById(req.params.id, function (err, foundIdea) {
       if (err) {
         req.flash("error", "post not found.");
         res.redirect("/display-page");
       } else {
         //does the user own the idea?
-        if (bizIdea.onwer.id.equals(req.user._id)) {
+        if (foundIdea.owner.id.equals(req.user._id)) {
           next();
         } else {
           req.flash("error", "You do not have permission to this post.");

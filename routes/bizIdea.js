@@ -11,7 +11,9 @@ router.get("/create-card", (req, res) => {
 });
 // create a card
 router.post("/create-card", middlewareObj.isLoggedIn, (req, res) => {
-  console.log(req.body);
+  if ((req.body.imageInput = "")) {
+    req.body.imageInput = undefined;
+  }
   let newBizIdea = new BizIdea({
     title: req.body.titleInput,
     description: req.body.descriptionInput,
@@ -45,17 +47,23 @@ router.get("/bizIdeas", (req, res) => {
 });
 
 // details page
-router.get("/details-page:id", (req, res) => {
-  res.render("details-page.ejs");
-  let id = req.params.id;
-  console.log(id);
+router.get("/details-page/:id", (req, res) => {
+  bizIdea.findById(req.params.id, (err, foundIdeabyID) => {
+    if (err) {
+      req.flash("error", "Something went wrong.");
+      res.redirect("/display-page");
+    } else {
+      res.render("details-page.ejs", { bizIdea: foundIdeabyID });
+    }
+  });
 });
+
 //edit business Idea
 router.get("/:id/edit", middlewareObj.checkIdeaOwnership, (req, res) => {
   //find Idea ID in DB
   bizIdea.findById(req.params.id, (err, foundIdea) => {
     if (err) {
-      req.flash("error", "Something went wrong.");
+      req.flash("error", "Please Login in to edit card");
       res.redirect("/display-card");
     } else {
       //direct to edit page
@@ -64,20 +72,32 @@ router.get("/:id/edit", middlewareObj.checkIdeaOwnership, (req, res) => {
   });
 });
 
-router.get("/edit-card", (req, res) => {
-  res.render("edit-card.ejs");
-});
-
-//DELETE ROUTE===========================================
-router.delete("/:id", middleware.checkIdeaOwnership, (req, res) => {
-  bizIdea.findByIdAndRemove(req.params.id, function (err) {
+//UPDATE ROUTE==========================
+router.put("/details-page/:id", middleware.checkIdeaOwnership, (req, res) => {
+  bizIdea.findByIdAndUpdate(req.params.id, req.body.bizIdea, (err) => {
     if (err) {
-      res.redirect("/display-card");
+      res.redirect("/display-page");
     } else {
-      req.flash("success", "post successfully deleted.");
-      res.redirect("/display-card");
+      req.flash("success", "post successfully updated.");
+      res.redirect("/dispaly-page/" + req.params.id);
     }
   });
 });
+
+//DELETE ROUTE===========================================
+router.delete(
+  "/details-page/:id",
+  middleware.checkIdeaOwnership,
+  (req, res) => {
+    bizIdea.findByIdAndRemove(req.params.id, function (err) {
+      if (err) {
+        res.redirect("/display-card");
+      } else {
+        req.flash("success", "post successfully deleted.");
+        res.redirect("/display-card");
+      }
+    });
+  }
+);
 
 module.exports = router;
