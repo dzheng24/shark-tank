@@ -40,28 +40,20 @@ function createCard(data) {
     // newDescription.innerHTML = `${shortendDescription}...`;
     newCardBody.appendChild(newDescription);
 
-    // adding a button
+    // add button container
+    let newButtonContainer = document.createElement("div");
+    newButtonContainer.setAttribute("class", "button-container");
+    newCardBody.appendChild(newButtonContainer);
+
+    // adding "view for more details" button
     let newButton = document.createElement("a");
     newButton.setAttribute(
       "class",
       "btn btn-outline-secondary my-2 my-sm-0 my-blue-btn"
     );
     newButton.setAttribute("href", "#");
-    newButton.innerHTML = "Edit for Later";
-    newCardBody.appendChild(newButton);
-
-    // adding a delete button
-    let deleteButton = document.createElement("a");
-    deleteButton.setAttribute(
-      "class",
-      "btn btn-outline-secondary my-2 my-sm-0 my-red-btn"
-    );
-    deleteButton.setAttribute("href", "#");
-    deleteButton.innerHTML = "Edit for Later";
-    deleteButton.addEventListener("click", () =>
-      console.log("clicking on delete button")
-    );
-    newCardBody.appendChild(deleteButton);
+    newButton.innerHTML = "More Details";
+    newButtonContainer.appendChild(newButton);
 
     // append card to display area
     document.getElementById("display-area").prepend(newCard);
