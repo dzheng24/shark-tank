@@ -25,7 +25,7 @@ body {
 
 #display-area {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
 }
@@ -37,7 +37,7 @@ body {
 .card {
   border: 1px solid white;
   height: 30rem;
-  margin-top: 20px;
+  margin: 20px;
   width: 20rem;
   opacity: 0.8;
 }
@@ -64,7 +64,8 @@ body {
 }
 
 h1 {
-  color: black;
+  color: #ff7979;
+
   font-size: 80px;
   font-weight: 500;
 }
@@ -75,6 +76,6 @@ h1 {
 }
 
 .card-title {
-  font-size: 40px;
+  font-size: 150%;
   font-weight: bold;
 }
