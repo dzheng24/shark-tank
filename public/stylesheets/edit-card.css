@@ -1,0 +1,9 @@
+#content-container {
+  margin-top: 10vh;
+}
+
+.btn {
+  width: 7rem;
+  height: auto;
+  padding: inherit;
+}

@@ -1,8 +1,15 @@
-label {
-  color: white;
-  margin-top: 20px;
+.container {
+  margin-top: 10vh;
 }
 
-button {
-  margin-top: 20px;
+h1 {
+  color: white;
+}
+
+.form-control {
+  width: 50%;
+}
+
+label {
+  color: white;
 }

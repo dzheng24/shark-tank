@@ -14,10 +14,14 @@ router.get("/register", (req, res) => {
 
 //handling user sign up
 router.post("/register", (req, res) => {
+  if (req.body.profilePic === "") {
+    req.body.profilePic = undefined;
+  }
+
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
-    profiePic: req.body.profiePic,
+    profilePic: req.body.profilePic,
   });
   User.register(newUser, req.body.password, (err, user) => {
     if (err) {

@@ -8,5 +8,9 @@ html {
 }
 
 #main-content {
-  margin-top: 20px;
+  margin-top: 10vh;
+}
+
+label {
+  color: white;
 }

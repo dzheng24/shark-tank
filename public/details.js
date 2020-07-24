@@ -43,6 +43,18 @@ function createDetails(data) {
       newDescription.innerHTML = `${data[i].description}`;
       newCardBody.appendChild(newDescription);
 
+      // add username
+      let newUserName = document.createElement("h6");
+      newUserName.setAttribute("class", "card-subtitle mb-2 text-muted");
+      newUserName.innerHTML = `Idea by ${data[i].owner.username}`;
+      newCardBody.appendChild(newUserName);
+
+      // creating "owner email" hyperlink
+      let newEmailLink = document.createElement("a");
+      newEmailLink.setAttribute("href", `mailto: ${data[i].owner.email}`);
+      newEmailLink.innerHTML = `Email: ${data[i].owner.email}`;
+      newCardBody.appendChild(newEmailLink);
+
       // add button container
       let newButtonContainer = document.createElement("div");
       newButtonContainer.setAttribute("class", "button-container");
@@ -52,9 +64,10 @@ function createDetails(data) {
       let editButton = document.createElement("a");
       editButton.setAttribute(
         "class",
-        "btn btn-outline-secondary my-2 my-sm-0 btn-warning"
+        "btn btn-outline-secondary my-2 my-sm-0 my-buttons"
       );
       editButton.setAttribute("href", `/${id}/edit`);
+
       editButton.innerHTML = "Edit";
       newButtonContainer.appendChild(editButton);
 
@@ -68,7 +81,7 @@ function createDetails(data) {
       let deleteButton = document.createElement("button");
       deleteButton.setAttribute(
         "class",
-        "btn btn-outline-secondary my-2 my-sm-0 btn-danger"
+        "btn btn-outline-secondary my-2 my-sm-0 my-buttons"
       );
       // deleteButton.setAttribute("href", "/display-page");
       deleteButton.innerHTML = "Delete";

@@ -34,8 +34,8 @@ function createCard(data) {
     // adding description
     let newDescription = document.createElement("p");
     newDescription.setAttribute("class", "card-text");
-    if (data[i].description.length > 10) {
-      let shortened = data[i].description.substr(0, 10);
+    if (data[i].description.length > 50) {
+      let shortened = data[i].description.substr(0, 50);
       newDescription.innerHTML = `${shortened}...`;
     } else {
       newDescription.innerHTML = data[i].description;
