@@ -24,13 +24,8 @@ const bizIdeaSchema = new mongoose.Schema({
   owner: {
     id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     username: String,
+    email: String,
   },
-  comments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment",
-    },
-  ],
 });
 
 module.exports = mongoose.model("BizIdea", bizIdeaSchema);

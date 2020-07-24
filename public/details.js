@@ -43,6 +43,18 @@ function createDetails(data) {
       newDescription.innerHTML = `${data[i].description}`;
       newCardBody.appendChild(newDescription);
 
+      // add username
+      let newUserName = document.createElement("h6");
+      newUserName.setAttribute("class", "card-subtitle mb-2 text-muted");
+      newUserName.innerHTML = `Idea by ${data[i].owner.username}`;
+      newCardBody.appendChild(newUserName);
+
+      // creating "owner email" hyperlink
+      let newEmailLink = document.createElement("a");
+      newEmailLink.setAttribute("href", `mailto: ${data[i].owner.email}`);
+      newEmailLink.innerHTML = `Email: ${data[i].owner.email}`;
+      newCardBody.appendChild(newEmailLink);
+
       // add button container
       let newButtonContainer = document.createElement("div");
       newButtonContainer.setAttribute("class", "button-container");
