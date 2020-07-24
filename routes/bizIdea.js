@@ -6,7 +6,7 @@ const middlewareObj = require("../Middleware/middleware.js");
 const bizIdea = require("../models/bizIdea");
 
 // show user the form
-router.get("/create-card", (req, res) => {
+router.get("/create-card", middlewareObj.isLoggedIn, (req, res) => {
   res.render("create-card.ejs");
 });
 // create a card
