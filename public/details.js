@@ -19,11 +19,9 @@ function createDetails(data) {
       // make image on top
       let newImage = document.createElement("img");
       newImage.setAttribute("class", "card-img-top");
-      if (`${data[i].image_url}`.length < 10) {
-        newImage.setAttribute("src", "/resources/strong_shark.jpg");
-      } else {
-        newImage.setAttribute("src", `${data[i].image_url}`);
-      }
+      newImage.setAttribute("src", `${data[i].image_url}`);
+      newImage.style.height = "30vh";
+      newImage.style.width = "25vw";
       newCard.appendChild(newImage);
 
       // make card body
@@ -99,7 +97,7 @@ function createDetails(data) {
       */
 
       // append card to display area
-      document.getElementById("display-area").prepend(newCard);
+      document.getElementById("display-area").appendChild(newCard);
     }
   }
 }
