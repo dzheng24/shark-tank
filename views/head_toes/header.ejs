@@ -11,23 +11,14 @@
   <link rel="stylesheet" href="/stylesheets/main.css" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
 </head>
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top d-flex justify-content-between" id="navbar">
   <div id="icon-shark" class="navbar-header">
   <a class="navbar-brand" href="/display-page" style="color: rgb(43, 41, 41)">SharkTank <img src="/resources/shark.gif" width="40" alt="shark icon" loading="lazy"></a>
 </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form id="search-bar" class="form-inline my-2 my-lg-0" action="/bizIdeas" method="GET">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        name="search"
-        placeholder="Search for Million dollar Ideas"
-      />
-      <input class="btn btn-outline-secondary my-2 my-sm-0" type="submit" value="SEARCH">
-    </input>
-    </form>
-    <ul class="navbar-nav mr-auto">
+    
+    <ul class="navbar-nav ml-auto">
       <% if(!currentUser){ %>
       <li id="navButton"><a href="/login">Login</a></li>
       <li id="navButton"><a href="/register">Sign Up</a></li>

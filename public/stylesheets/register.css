@@ -9,3 +9,7 @@ h1 {
 .form-control {
   width: 50%;
 }
+
+label {
+  color: white;
+}
